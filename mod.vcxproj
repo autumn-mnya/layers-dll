@@ -15,7 +15,7 @@
     <ProjectGuid>{16034316-37DE-44CB-B557-81550CA96C13}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <WindowsTargetPlatformVersion>7.0</WindowsTargetPlatformVersion>
-    <ProjectName>mod</ProjectName>
+    <ProjectName>layers</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -42,13 +42,13 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>CaveStory\mods\mod</OutDir>
-    <TargetName>mod</TargetName>
+    <OutDir>CaveStory\mods\layers</OutDir>
+    <TargetName>layers</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>CaveStory\mods\mod</OutDir>
-    <TargetName>mod</TargetName>
+    <OutDir>CaveStory\mods\layers</OutDir>
+    <TargetName>layers</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -87,12 +87,28 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\AutPI.cpp" />
+    <ClCompile Include="src\Layers.cpp" />
     <ClCompile Include="src\Main.cpp" />
+    <ClCompile Include="src\patch_utils.cpp" />
+    <ClCompile Include="src\tsc.cpp" />
     <ClCompile Include="src\\mod_loader.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\AutPI.h" />
     <ClInclude Include="src\cave_story.h" />
+    <ClInclude Include="src\doukutsu\credits.h" />
+    <ClInclude Include="src\doukutsu\cstdlib.h" />
+    <ClInclude Include="src\doukutsu\draw.h" />
+    <ClInclude Include="src\doukutsu\map.h" />
+    <ClInclude Include="src\doukutsu\misc.h" />
+    <ClInclude Include="src\doukutsu\npc.h" />
+    <ClInclude Include="src\doukutsu\tsc.h" />
+    <ClInclude Include="src\doukutsu\types.h" />
+    <ClInclude Include="src\doukutsu\window.h" />
+    <ClInclude Include="src\Layers.h" />
     <ClInclude Include="src\Main.h" />
+    <ClInclude Include="src\patch_utils.h" />
     <ClInclude Include="src\\mod_loader.h" />
     <ClInclude Include="src\\mod_loader_hooks.h" />
   </ItemGroup>

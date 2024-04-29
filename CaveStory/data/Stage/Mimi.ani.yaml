@@ -1,0 +1,7 @@
+tiles:
+  160:
+    frames: 7
+    delay: 20
+  175:
+    frames: 7
+    delay: 10

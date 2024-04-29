@@ -11,9 +11,6 @@ static int& window_magnification = *reinterpret_cast<int*>(0x48F914); // Window 
 static ::RECT& grcGame = *reinterpret_cast<::RECT*>(0x48F91C);
 static ::RECT& grcFull = *reinterpret_cast<::RECT*>(0x48F92C);
 
-static auto& gModulePath = *reinterpret_cast<char(*)[MAX_PATH]>(0x49E328);
-static auto& gDataPath = *reinterpret_cast<char(*)[MAX_PATH]>(0x49E220);
-
 #define WINDOW_WIDTH grcGame.right
 #define WINDOW_HEIGHT grcGame.bottom
 
@@ -841,7 +838,7 @@ struct ORGDATA
 	char mute[16];
 	unsigned char def_pan;
 	unsigned char def_volume;
-	
+
 	ORGDATA();
 	void InitOrgData();
 	void GetMusicInfo(MUSICINFO* mi);
@@ -956,6 +953,7 @@ static auto& gBoss = *reinterpret_cast<NPCHAR(*)[20]>(0x4BBA58);
 static auto& gpBossFuncTbl = *reinterpret_cast<BOSSFUNCTION(*)[10]>(0x498AEC);
 static BOSSLIFE& gBL = *reinterpret_cast<BOSSLIFE*>(0x4BBA44);
 
+static auto& gCrt = *reinterpret_cast<CARET(*)[64]>(0x49BCA8); // idk if i did this right actually
 static auto& gCaretTable = *reinterpret_cast<CARET_TABLE(*)[18]>(0x48F830);
 static auto& gpCaretFuncTbl = *reinterpret_cast<CARETFUNCTION(*)[18]>(0x48F8C0);
 static auto& star = *reinterpret_cast<CARET(*)[3]>(0x4A5800);
@@ -991,6 +989,7 @@ static int& gSuperYpos = *reinterpret_cast<int*>(0x4BBA28);
 static const char*& gPassPixEve = *reinterpret_cast<const char**>(0x498540);
 
 static NPC_TABLE** gNpcTable = (NPC_TABLE**)0x4BBA34;
+static NPCFUNCTION* gpNpcFuncTbl = (NPCFUNCTION*)0x498548;
 
 static auto& gPermitStage = *reinterpret_cast<PERMIT_STAGE(*)[8]>(0x4A5500);
 
@@ -1386,15 +1385,15 @@ const auto PlayDramObject = reinterpret_cast<void(*)(unsigned char, int, signed 
 // Pointers to ORGDATA member functions
 namespace OrgData
 {
-const auto ctor = reinterpret_cast<ORGDATA * (__thiscall*)(ORGDATA*)>(0x41B600);
-const auto InitOrgData = reinterpret_cast<void(__thiscall*)(ORGDATA*)>(0x41B650);
-const auto SetMusicInfo = reinterpret_cast<BOOL(__thiscall*)(ORGDATA*, MUSICINFO*, unsigned long)>(0x41B730);
-const auto NoteAlloc = reinterpret_cast<BOOL(__thiscall*)(ORGDATA*, unsigned short)>(0x41B890);
-const auto ReleaseNote = reinterpret_cast<void(__thiscall*)(ORGDATA*)>(0x41BA70);
-const auto InitMusicData = reinterpret_cast<BOOL(__thiscall*)(ORGDATA*, const char*)>(0x41BAD0);
-const auto PlayData = reinterpret_cast<void(__thiscall*)(ORGDATA*)>(0x41C2B0);
-const auto SetPlayPointer = reinterpret_cast<void(__thiscall*)(ORGDATA*, long)>(0x41C630);
-const auto GetMusicInfo = reinterpret_cast<void(__thiscall*)(ORGDATA*, MUSICINFO*)>(0x41C0B0);
+	const auto ctor = reinterpret_cast<ORGDATA * (__thiscall*)(ORGDATA*)>(0x41B600);
+	const auto InitOrgData = reinterpret_cast<void(__thiscall*)(ORGDATA*)>(0x41B650);
+	const auto SetMusicInfo = reinterpret_cast<BOOL(__thiscall*)(ORGDATA*, MUSICINFO*, unsigned long)>(0x41B730);
+	const auto NoteAlloc = reinterpret_cast<BOOL(__thiscall*)(ORGDATA*, unsigned short)>(0x41B890);
+	const auto ReleaseNote = reinterpret_cast<void(__thiscall*)(ORGDATA*)>(0x41BA70);
+	const auto InitMusicData = reinterpret_cast<BOOL(__thiscall*)(ORGDATA*, const char*)>(0x41BAD0);
+	const auto PlayData = reinterpret_cast<void(__thiscall*)(ORGDATA*)>(0x41C2B0);
+	const auto SetPlayPointer = reinterpret_cast<void(__thiscall*)(ORGDATA*, long)>(0x41C630);
+	const auto GetMusicInfo = reinterpret_cast<void(__thiscall*)(ORGDATA*, MUSICINFO*)>(0x41C0B0);
 }
 // Wrappers for the above in case you need to call them from within your own code
 inline ORGDATA::ORGDATA() : info{}, track{}, mute{}, def_pan{}, def_volume{} // Initialize to shut up compiler warnings

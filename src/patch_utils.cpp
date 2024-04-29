@@ -1,0 +1,97 @@
+#include "patch_utils.h"
+#define WIN32_LEAN_AND_MEAN
+#include <Windows.h>
+#include "doukutsu/credits.h"
+
+void applyPostInitPatches();
+void cleanup();
+
+/* If patcher::setupPostInitHook() is called above, then this function will be called
+ * right before entering the main game loop.
+ * Most things will be initialized at this point so do with that whatever you want. :)
+ */
+void applyPostInitPatches()
+{
+
+}
+
+/* If patcher::setupCleanupHook() is called above, then this function will be called
+*  upon exiting the game (with Esc+Esc).
+*/
+void cleanup()
+{
+
+}
+
+namespace patcher
+{
+
+	bool verifyBytes(dword address, const byte expectedBytes[], unsigned size)
+	{
+		// Let's assume we have read permissions because I don't want to deal with the case where that's not true
+		// (and that case is probably not happening anyways)
+		const byte* memPtr = reinterpret_cast<const byte*>(address);
+		for (unsigned i = 0; i < size; ++i)
+			if (memPtr[i] != expectedBytes[i])
+				return false;
+		return true;
+	}
+
+	void patchBytes(dword address, const byte bytes[], unsigned size)
+	{
+		void* addr = reinterpret_cast<void*>(address);
+		WriteProcessMemory(GetCurrentProcess(), addr, static_cast<const void*>(bytes), size, NULL);
+	}
+
+	void writeNOPs(dword address, unsigned numBytes)
+	{
+		// I could do this more simply with VirtualProtect + FillMemory, but let's not bother with that
+		const byte NOPs[] = { 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90 };
+
+		for (unsigned size = sizeof NOPs; size > 0; size /= 2)
+		{
+			while (numBytes >= size)
+			{
+				patchBytes(address, NOPs, size);
+				numBytes -= size;
+				address += size;
+			}
+		}
+	}
+
+
+	static void postInitHook()
+	{
+		// This function is called in place of InitCreditScript(), so we have to replace the original call here
+		csvanilla::InitCreditScript();
+		// Then call user-defined code
+		applyPostInitPatches();
+	}
+	void setupPostInitHook()
+	{
+		// Replaces the call to InitCreditScript() in Game() with our postInitHook() function
+		// I chose this location to place the hook for two reasons:
+		// 1) So that it doesn't conflict with Clownacy's mod loader (which hooks into the
+		//    sprintf call at the end of LoadGenericData()), and
+		// 2) It's right after most things in the game have been initialized
+		//    (the Mode[Opening/Title/Action] functions are called immediately after this), so
+		//    one can potentially do stuff that depends on things having sane values
+		//    (not sure what).
+		writeCall(0x40F68B, postInitHook);
+	}
+
+	static void cleanupHook()
+	{
+		// This function is called in place of ReleaseCreditScript(), so we replace the original call here
+		csvanilla::ReleaseCreditScript();
+		// Then call user-defined code
+		cleanup();
+	}
+	void setupCleanupHook()
+	{
+		// Replace the call to ReleaseCreditScript() in Game() with our cleanupHook() function
+		// (This is pretty much right before the game exits)
+		writeCall(0x40F6F9, cleanupHook);
+	}
+
+}

@@ -1,0 +1,10 @@
+tiles:
+  1:
+    frames: 255
+    delay: 1
+  2:
+    frames: 255
+    delay: 1
+  3:
+    frames: 255
+    delay: 1

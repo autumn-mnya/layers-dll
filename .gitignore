@@ -15,4 +15,7 @@ CaveStory/Profile.dat
 CaveStory/window.rect
 !CaveStory/mods/autpi/autpi.dll
 !CaveStory/mods/layers/layers.dll
+!CaveStory/mods/layers/yaml-cpp.dll
+!CaveStory/mods/layers/settings.ini
 !CaveStory/lua.dll
+/ZZ-FinalRelease

@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="src\Main.cpp" />
+    <ClCompile Include="src\\mod_loader.cpp" />
+    <ClCompile Include="src\tsc.cpp" />
+    <ClCompile Include="src\AutPI.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\cave_story.h" />
+    <ClInclude Include="src\Main.h" />
+    <ClInclude Include="src\\mod_loader.h" />
+    <ClInclude Include="src\\mod_loader_hooks.h" />
+    <ClInclude Include="src\doukutsu\credits.h">
+      <Filter>doukutsu</Filter>
+    </ClInclude>
+    <ClInclude Include="src\doukutsu\cstdlib.h">
+      <Filter>doukutsu</Filter>
+    </ClInclude>
+    <ClInclude Include="src\doukutsu\draw.h">
+      <Filter>doukutsu</Filter>
+    </ClInclude>
+    <ClInclude Include="src\doukutsu\map.h">
+      <Filter>doukutsu</Filter>
+    </ClInclude>
+    <ClInclude Include="src\doukutsu\npc.h">
+      <Filter>doukutsu</Filter>
+    </ClInclude>
+    <ClInclude Include="src\doukutsu\types.h">
+      <Filter>doukutsu</Filter>
+    </ClInclude>
+    <ClInclude Include="src\doukutsu\tsc.h">
+      <Filter>doukutsu</Filter>
+    </ClInclude>
+    <ClInclude Include="src\AutPI.h" />
+    <ClInclude Include="src\doukutsu\window.h">
+      <Filter>doukutsu</Filter>
+    </ClInclude>
+    <ClInclude Include="src\doukutsu\misc.h">
+      <Filter>doukutsu</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="doukutsu">
+      <UniqueIdentifier>{472704bc-9e97-46fe-bbd0-a188720ca738}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
