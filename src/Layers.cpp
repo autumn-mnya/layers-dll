@@ -299,12 +299,7 @@ namespace layers_mode
 	void PutStage_Front(int fx, int fy)
 	{
 		// This is vanilla behavior
-		if (pause_animated_tiles_on_pri)
-		{
-			if (csvanilla::g_GameFlags & 3)
-				put_front_ran++;
-		}
-		else
+		if (!pause_animated_tiles_on_pri || (csvanilla::g_GameFlags & 3))
 			put_front_ran++;
 
 		PutStage_Layer(gLayers.data, fx, fy, [](int atrb) { return atrb < 0x40 || atrb >= 0x80; },
