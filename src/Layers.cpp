@@ -276,8 +276,13 @@ namespace layers_mode
 
 				// Draw tile
 				::RECT rect;
-				rect.left = (data[offset] % 16) * 16;
-				rect.top = (data[offset] / 16) * 16;
+				int dataAni = data[offset];
+				AnimatedTile aTile = tile_replacements[dataAni];
+				if (aTile.id != 0) {
+					dataAni += (put_front_ran / aTile.frame_timer) % aTile.frames;
+				}
+				rect.left = (dataAni % 16) * 16;
+				rect.top = (dataAni / 16) * 16;
 				rect.right = rect.left + 16;
 				rect.bottom = rect.top + 16;
 

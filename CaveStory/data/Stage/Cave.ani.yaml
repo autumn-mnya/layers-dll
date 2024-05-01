@@ -1,0 +1,7 @@
+tiles:
+  348:
+    frames: 4
+    delay: 10
+  364:
+    frames: 4
+    delay: 10
