@@ -17,6 +17,7 @@
 
 bool pause_animated_tiles_on_pri = true;
 
+
 typedef struct STAGE_TABLE
 {
 	char parts[0x20];
@@ -32,6 +33,8 @@ typedef struct STAGE_TABLE
 static STAGE_TABLE* mTMT = (STAGE_TABLE*)(*(unsigned*)0x420C2F); // This is a pointer to where it gets used, instead of the actual table, so that it has compatibility with mods.
 
 int put_front_ran = 0;
+
+int MapBufferSize = 0x96000;
 
 // Define your struct for animated tiles
 struct AnimatedTile {
@@ -122,8 +125,6 @@ void ActHook()
 
 namespace layers_mode
 {
-
-	constexpr int PXM_BUFFER_SIZE = 0x96000; // Double the vanilla size
 	int screenTileWidth = 21;
 	int screenTileHeight = 16;
 
@@ -132,10 +133,10 @@ namespace layers_mode
 	csvanilla::BOOL InitMapData2()
 	{
 		using csvanilla::malloc;
-		gLayers.data = (unsigned short*)malloc(PXM_BUFFER_SIZE);
-		gLayers.farBackData = (unsigned short*)malloc(PXM_BUFFER_SIZE);
-		gLayers.backData = (unsigned short*)malloc(PXM_BUFFER_SIZE);
-		gLayers.frontData = (unsigned short*)malloc(PXM_BUFFER_SIZE);
+		gLayers.data = (unsigned short*)malloc(MapBufferSize);
+		gLayers.farBackData = (unsigned short*)malloc(MapBufferSize);
+		gLayers.backData = (unsigned short*)malloc(MapBufferSize);
+		gLayers.frontData = (unsigned short*)malloc(MapBufferSize);
 		return 1;
 	}
 

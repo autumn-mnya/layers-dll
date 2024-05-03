@@ -31,4 +31,5 @@ void InitMod(void)
 	RegisterHooks(); // register all of our jank ass hooks
 
 	pause_animated_tiles_on_pri = ModLoader_GetSettingBool("Pause Animated Tiles on PRI", true);
+	MapBufferSize = ModLoader_GetSettingInt("Map Buffer Size", 614400);
 }

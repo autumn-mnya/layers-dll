@@ -1,6 +1,7 @@
 #pragma once
 
 extern bool pause_animated_tiles_on_pri;
+extern int MapBufferSize;
 
 void InitHook();
 void TransferStageHook();
