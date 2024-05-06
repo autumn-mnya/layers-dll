@@ -21,10 +21,17 @@ void RegisterHooks()
 	RegisterTransferStageInitElement(TransferStageHook);
 }
 
+void ReleaseData()
+{
+	if (autpiDLL != nullptr)
+		free(autpiDLL);
+}
+
 void InitMod(void)
 {
 	// Same as periwinkle dll patches, but now its a mod loader dll at heart
 	LoadAutPiDll(); // load autpi
+	RegisterReleaseElement(ReleaseData); // release dlls
 	layers_mode::applyLayersPatch();
 	layers_mode::applyTSCPatch();
 	layers_mode::fixGraphicsEnhancementCompatibility();
