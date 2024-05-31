@@ -13,11 +13,10 @@
 void RegisterHooks()
 {
 	// all of this just to load animated tiles lol
+	RegisterGetTrgElement(ActHook);
 	RegisterPreModeElement(InitHook);
 	RegisterOpeningInitElement(InitHook);
-	RegisterOpeningActionElement(ActHook);
 	RegisterInitElement(InitHook);
-	RegisterActionElement(ActHook);
 	RegisterTransferStageInitElement(TransferStageHook);
 }
 
