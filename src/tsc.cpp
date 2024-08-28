@@ -1,7 +1,7 @@
 // Implements <CML and <SML for the layers hack.
 // Overwrites the space used for <SMP
 
-#include "layers.h"
+#include "Layers.h"
 #include "patch_utils.h"
 #include "doukutsu/map.h"
 #include "doukutsu/npc.h"
@@ -43,6 +43,15 @@ namespace layers_mode
 		*tile = no;
 		for (int i = 0; i < 3; ++i)
 			csvanilla::SetNpChar(4, x * 0x2000, y * 0x2000, 0, 0, 0, nullptr, 0);
+		return 1;
+	}
+
+	csvanilla::BOOL ChangeMapLayerNoSmoke(int x, int y, unsigned short no, int layer)
+	{
+		unsigned short* tile = getTile(x, y, layer);
+		if (tile == nullptr || *tile == no)
+			return 0;
+		*tile = no;
 		return 1;
 	}
 

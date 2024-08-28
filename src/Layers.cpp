@@ -371,5 +371,78 @@ namespace layers_mode
 		// The modloader hack doesn't write to this one?
 		//ReadProcessMemory(GetCurrentProcess(), reinterpret_cast<void*>(0x413B00), &screenTileHeight, 4, NULL);
 	}
+}
 
+int GetLayerBuffer()
+{
+	return MapBufferSize;
+}
+
+unsigned short* GetLayerFront()
+{
+	return layers_mode::gLayers.data;
+}
+
+unsigned short* GetLayerFarFront()
+{
+	return layers_mode::gLayers.frontData;
+}
+
+unsigned short* GetLayerBack()
+{
+	return layers_mode::gLayers.backData;
+}
+
+unsigned short* GetLayerFarBack()
+{
+	return layers_mode::gLayers.farBackData;
+}
+
+void SetLayerFront(unsigned short* data, size_t size)
+{
+	if (size > 0)
+		memcpy(layers_mode::gLayers.data, data, size);
+}
+
+void SetLayerFarFront(unsigned short* data, size_t size)
+{
+	if (size > 0)
+		memcpy(layers_mode::gLayers.frontData, data, size);
+}
+
+void SetLayerBack(unsigned short* data, size_t size)
+{
+	if (size > 0)
+		memcpy(layers_mode::gLayers.backData, data, size);
+}
+
+void SetLayerFarBack(unsigned short* data, size_t size)
+{
+	if (size > 0)
+		memcpy(layers_mode::gLayers.farBackData, data, size);
+}
+
+void SetLayersAttribute(int index, int input)
+{
+	layers_mode::gLayers.atrb[index] = input;
+}
+
+unsigned char GetLayersAttributeIndex(int index)
+{
+	return layers_mode::gLayers.atrb[index];
+}
+
+unsigned char* GetLayersAttribute()
+{
+	return layers_mode::gLayers.atrb;
+}
+
+int GetLayerMapWidth()
+{
+	return layers_mode::screenTileWidth;
+}
+
+int GetLayerMapHeight()
+{
+	return layers_mode::screenTileHeight;
 }
