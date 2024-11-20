@@ -5,6 +5,11 @@
     <ClCompile Include="src\\mod_loader.cpp" />
     <ClCompile Include="src\tsc.cpp" />
     <ClCompile Include="src\AutPI.cpp" />
+    <ClCompile Include="src\Layers.cpp" />
+    <ClCompile Include="src\patch_utils.cpp" />
+    <ClCompile Include="src\lua\Lua.cpp">
+      <Filter>lua</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\cave_story.h" />
@@ -39,10 +44,18 @@
     <ClInclude Include="src\doukutsu\misc.h">
       <Filter>doukutsu</Filter>
     </ClInclude>
+    <ClInclude Include="src\Layers.h" />
+    <ClInclude Include="src\patch_utils.h" />
+    <ClInclude Include="src\lua\Lua.h">
+      <Filter>lua</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="doukutsu">
       <UniqueIdentifier>{472704bc-9e97-46fe-bbd0-a188720ca738}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="lua">
+      <UniqueIdentifier>{fd303769-d825-4b39-84a7-6c49b9c04687}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
