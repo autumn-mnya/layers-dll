@@ -1,6 +1,6 @@
 #include "patch_utils.h"
 #define WIN32_LEAN_AND_MEAN
-#include <Windows.h>
+#include <windows.h>
 #include "doukutsu/credits.h"
 
 void applyPostInitPatches();

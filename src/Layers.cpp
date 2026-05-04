@@ -1,7 +1,7 @@
 // Layers mode implementation
 // idk how this even works, I'm just copy/pasting code (mostly)
 
-#include "layers.h"
+#include "Layers.h"
 #include "patch_utils.h"
 #include "doukutsu/cstdlib.h"
 #include "doukutsu/map.h"
@@ -16,7 +16,6 @@
 #include <yaml-cpp/yaml.h>
 
 bool pause_animated_tiles_on_pri = true;
-
 
 typedef struct STAGE_TABLE
 {

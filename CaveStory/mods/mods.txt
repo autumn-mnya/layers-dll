@@ -1,3 +1,2 @@
 autpi
-sdl
 layers

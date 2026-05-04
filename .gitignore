@@ -1,5 +1,6 @@
 /.git
 /.vs
+/build*
 /Debug
 /Release
 mod.vcxproj.user
@@ -18,3 +19,5 @@ CaveStory/window.rect
 !CaveStory/lua.dll
 /ZZ-FinalRelease
 CaveStory/mods/error.txt
+!CaveStory/mods/mod_loader.dll
+!CaveStory/dsound.dll
