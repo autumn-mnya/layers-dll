@@ -33,16 +33,15 @@ static STAGE_TABLE* mTMT = (STAGE_TABLE*)(*(unsigned*)0x420C2F); // This is a po
 
 int put_front_ran = 0;
 
-int MapBufferSize = 0x96000;
+int MapBufferSize = 0x96000; // hardcoded to PXM_BUFFER_SIZE by default, but this is overwritten by settings.ini anyways. Well, nonetheless..
 
-// Define your struct for animated tiles
 struct AnimatedTile {
 	int id;
 	int frames;
 	int frame_timer;
 };
 
-#define TILE_REP_MAX 0x10000 // same as 
+#define TILE_REP_MAX 0x10000
 AnimatedTile tile_replacements[TILE_REP_MAX];
 
 // Function to register animated tile data
