@@ -29,6 +29,7 @@ void InitMod(void)
 	layers_mode::fixGraphicsEnhancementCompatibility();
 	RegisterHooks(); // register all of our jank ass hooks
 
+	cmp_npc = ModLoader_GetSettingInt("CMP Entity ID", 4);
 	pause_animated_tiles_on_pri = ModLoader_GetSettingBool("Pause Animated Tiles on PRI", true);
 	MapBufferSize = ModLoader_GetSettingInt("Map Buffer Size", 614400);
 }

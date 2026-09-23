@@ -11,4 +11,4 @@ For windows users, I would recommend installing CMake, alongside __Visual Studio
 
 # Compatibility
 
-This dll should work for Windows 7+, but not XP or below.
+This dll should work for Windows XP+, in theory.

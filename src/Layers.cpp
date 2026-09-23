@@ -16,6 +16,7 @@
 #include <yaml-cpp/yaml.h>
 
 bool pause_animated_tiles_on_pri = true;
+int cmp_npc = 4;
 
 typedef struct STAGE_TABLE
 {
@@ -204,7 +205,7 @@ namespace layers_mode
 			return 0;
 		tile = no;
 		for (int i = 0; i < 3; ++i)
-			csvanilla::SetNpChar(4, x * 0x2000, y * 0x2000, 0, 0, 0, nullptr, 0);
+			csvanilla::SetNpChar(cmp_npc, x * 0x2000, y * 0x2000, 0, 0, 0, nullptr, 0);
 		return 1;
 	}
 

@@ -5,6 +5,7 @@
 #include "doukutsu/tsc.h"
 
 extern bool pause_animated_tiles_on_pri;
+extern int cmp_npc;
 extern int MapBufferSize;
 
 void InitHook();
